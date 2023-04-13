@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:minecraft_status_server/peticiones/peticiones.dart';
 import 'package:minecraft_status_server/widgets/is_false.dart';
@@ -11,7 +10,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  Peticiones pe = Peticiones();
+  Peticioes pe = Peticioes();
 
   //Esto es para agarrar el texto del input
   final userInput = TextEditingController();
@@ -37,31 +36,15 @@ class _HomeState extends State<Home> {
                 builder: (context, AsyncSnapshot snapshot) {
                   if (pe.server?['online'] == null) {
                     return normalState();
-                  } if (pe.server?['online'] == true) {
-                    return isTrue();
-                    
-                  } if (pe.server?['online'] == false) {
-                    return isFalse();
-                    
-                  } if(ConnectionState == ConnectionState.waiting){
-                    return const CircularProgressIndicator();
                   }
-                  return Container();
-          
-
-                  // if (pe.server?['online'] == true  ) {
-                  //    return Container(
-                  //     child: Text('PRENDIDO'),
-                  //   );
-
-                  // } if (pe.server?['online'] == false) {
-                  //    return Container(
-                  //     child: Text('APAGADO'),
-                  //   );
-
-                  // }else {
-                  //   return waitingData();
-                  // }
+                  if (pe.server?['online'] == true) {
+                    return isTrue();
+                  }
+                  if (pe.server?['online'] == false) {
+                    return isFalse();
+                  } else {
+                    return Container();
+                  }
                 },
               ),
               const SizedBox(height: 30),
@@ -82,11 +65,13 @@ class _HomeState extends State<Home> {
                       ElevatedButton(
                           onPressed: () {
                             setState(() {
-                              endPoint = userInput.text;
                               pe.getInfoServer(endPoint);
+                              endPoint = userInput.text;
+
+                              print('CACTH: $endPoint');
                             });
                           },
-                          child: const Text('Buscar'))
+                          child: Text('Buscar'))
                     ],
                   ))
             ],
@@ -94,13 +79,5 @@ class _HomeState extends State<Home> {
         ));
   }
 }
-              // return ClipRRect(
-              //   borderRadius: BorderRadius.circular(20),
-              //   child: Container(
-              //     color: Colors.amber,
-              //     height: 200,
-              //     width: 200,
 
-
-
-              //ServerPreuba.aternos.me
+        
