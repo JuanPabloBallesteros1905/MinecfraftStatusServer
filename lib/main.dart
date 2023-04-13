@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minecraft_status_server/screens/home.dart';
+import 'package:minecraft_status_server/themes/themes.dart';
 
 void main() => runApp(const MyApp());
 
@@ -11,7 +12,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: 'home',
-      routes: {'home': (context) =>  Home()}
+      routes: {'home': (context) =>  Home()},
+      theme: Themes.themes,
+
+
 
     );
   

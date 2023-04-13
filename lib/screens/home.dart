@@ -21,6 +21,7 @@ class _HomeState extends State<Home> {
     final textFieldHeiht = MediaQuery.of(context).size.width * 0.2;
 
     return Scaffold(
+      backgroundColor: const Color.fromRGBO(192, 192, 192, 1),
         appBar: AppBar(
           centerTitle: true,
           title: const Text('Minecraft Status Server'),
@@ -63,6 +64,7 @@ class _HomeState extends State<Home> {
                         height: 10,
                       ),
                       ElevatedButton(
+                        
                           onPressed: () {
                             setState(() {
                               pe.getInfoServer(endPoint);
@@ -71,7 +73,11 @@ class _HomeState extends State<Home> {
                               print('CACTH: $endPoint');
                             });
                           },
-                          child: Text('Buscar'))
+                          child: const Text('Buscar'),
+              
+                          
+                          
+                          )
                     ],
                   ))
             ],
