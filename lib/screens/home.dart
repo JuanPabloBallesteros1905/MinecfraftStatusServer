@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:minecraft_status_server/peticiones/peticiones.dart';
-
-import '../widgets/widgets_is_true.dart';
+import 'package:minecraft_status_server/widgets/is_false.dart';
+import 'package:minecraft_status_server/widgets/is_true.dart';
+import '../widgets/normal_state.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -22,6 +23,7 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: const Text('Minecraft Status Server'),
         ),
         body: Center(
@@ -33,11 +35,19 @@ class _HomeState extends State<Home> {
               FutureBuilder(
                 future: pe.getInfoServer(endPoint),
                 builder: (context, AsyncSnapshot snapshot) {
-                  return isTrue();
-
-
-                  
-             
+                  if (pe.server?['online'] == null) {
+                    return normalState();
+                  } if (pe.server?['online'] == true) {
+                    return isTrue();
+                    
+                  } if (pe.server?['online'] == false) {
+                    return isFalse();
+                    
+                  } if(ConnectionState == ConnectionState.waiting){
+                    return const CircularProgressIndicator();
+                  }
+                  return Container();
+          
 
                   // if (pe.server?['online'] == true  ) {
                   //    return Container(
@@ -71,10 +81,10 @@ class _HomeState extends State<Home> {
                       ),
                       ElevatedButton(
                           onPressed: () {
-                            endPoint = userInput.text;
-                            pe.getInfoServer(endPoint);
-
-                            setState(() {});
+                            setState(() {
+                              endPoint = userInput.text;
+                              pe.getInfoServer(endPoint);
+                            });
                           },
                           child: const Text('Buscar'))
                     ],
