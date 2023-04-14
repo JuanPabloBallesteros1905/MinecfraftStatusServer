@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:minecraft_status_server/peticiones/peticiones.dart';
 
 Widget isTrue() {
   const linkBanner =
       'https://i.pinimg.com/originals/95/b1/82/95b182e2f0b91fe82c8bcb3abfe25bc4.jpg';
-
-  Peticioes pe = Peticioes();
 
   return Column(
     children: [

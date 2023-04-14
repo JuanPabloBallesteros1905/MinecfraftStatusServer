@@ -5,6 +5,8 @@ import 'package:minecraft_status_server/widgets/is_true.dart';
 import '../widgets/normal_state.dart';
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
   State<Home> createState() => _HomeState();
 }
@@ -21,7 +23,7 @@ class _HomeState extends State<Home> {
     final textFieldHeiht = MediaQuery.of(context).size.width * 0.2;
 
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(192, 192, 192, 1),
+        backgroundColor: const Color.fromRGBO(192, 192, 192, 1),
         appBar: AppBar(
           centerTitle: true,
           title: const Text('Minecraft Status Server'),
@@ -56,28 +58,26 @@ class _HomeState extends State<Home> {
                   child: Column(
                     children: [
                       TextField(
+                        
+
                         controller: userInput,
-                        decoration: const InputDecoration(
-                            hintText: 'Direccion del server'),
+                        decoration:
+                            const InputDecoration(hintText: '(Solo Java)'),
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 20,
                       ),
                       ElevatedButton(
-                        
-                          onPressed: () {
-                            setState(() {
-                              pe.getInfoServer(endPoint);
-                              endPoint = userInput.text;
+                        onPressed: () {
+                          setState(() {
+                            pe.getInfoServer(endPoint);
+                            endPoint = userInput.text;
+                       
 
-                              print('CACTH: $endPoint');
-                            });
-                          },
-                          child: const Text('Buscar'),
-              
-                          
-                          
-                          )
+                          });
+                        },
+                        child: const Text('Buscar'),
+                      )
                     ],
                   ))
             ],
@@ -85,5 +85,3 @@ class _HomeState extends State<Home> {
         ));
   }
 }
-
-        

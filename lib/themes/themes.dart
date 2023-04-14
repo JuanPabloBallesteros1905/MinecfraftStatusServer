@@ -3,13 +3,23 @@ import 'package:flutter/material.dart';
 class Themes{
   static final themes = ThemeData.light().copyWith(
     inputDecorationTheme: const InputDecorationTheme(
+    
 
-      fillColor: Color.fromARGB(255, 97, 90, 68),
-      filled: true
+      filled: true,
+
+
+   
     ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(
-      backgroundColor: const Color.fromRGBO(74, 0, 112, 1)
+      backgroundColor: const Color.fromRGBO(51, 51, 51, 1),
+      shape: const StadiumBorder(side: BorderSide(width: 5)),
+      elevation: 0,
+      
+      
+
+      minimumSize: const Size(100, 50)
+    
     )),
 
     appBarTheme: const AppBarTheme(

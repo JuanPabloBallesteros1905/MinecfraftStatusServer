@@ -15,8 +15,6 @@ class Peticioes {
       final response = await Dio().get( 'https://api.mcsrvstat.us/2/$endPoint' );
       server = response.data;
 
-      print(server['online']);
-      print(server['hostname']);
 
     }
   }
