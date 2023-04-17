@@ -11,7 +11,7 @@ Widget normalState() {
           decoration: const BoxDecoration(
               image: DecorationImage(
                   image: NetworkImage(linkBanner), fit: BoxFit.cover)),
-          width: 250,
+          width: 300,
           height: 230,
           child: Column(
             children: [

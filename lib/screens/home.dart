@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:minecraft_status_server/peticiones/peticiones.dart';
-import 'package:minecraft_status_server/widgets/is_false.dart';
-import 'package:minecraft_status_server/widgets/is_true.dart';
-import '../widgets/normal_state.dart';
+import 'package:minecraft_status_server/widgets/widgets.dart';
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -37,17 +36,39 @@ class _HomeState extends State<Home> {
               FutureBuilder(
                 future: pe.getInfoServer(endPoint),
                 builder: (context, AsyncSnapshot snapshot) {
-                  if (pe.server?['online'] == null) {
+
+
+            
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return isLoading();
+                    
+                  } else if (pe.server?['online'] == false){
+                    return isFalse();
+                  }  else if (pe.server?['online'] == true){
+                    return isTrue();
+                  } else{
                     return normalState();
                   }
-                  if (pe.server?['online'] == true) {
-                    return isTrue();
-                  }
-                  if (pe.server?['online'] == false) {
-                    return isFalse();
-                  } else {
-                    return Container();
-                  }
+
+
+
+
+
+                  // if (pe.server?['online'] == null) {
+                  //   return normalState();
+                  // }
+                  // if (pe.server?['online'] == true) {
+                  //   return isTrue();
+                  // }
+                  // if (pe.server?['online'] == false) {
+                  //   return isFalse();
+                  // } if (snapshot.connectionState == ConnectionState.waiting) {
+                  //   return Center(child: 
+                  //   CircularProgressIndicator(),);
+                    
+                  // } else{
+                  //   return Center();
+                  // }
                 },
               ),
               const SizedBox(height: 30),
